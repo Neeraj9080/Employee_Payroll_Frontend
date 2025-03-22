@@ -1,0 +1,63 @@
+<div class="header">
+  <div class="logo-section">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoRiirSyFQIfu6nSePVCoF5UZCePQxtxCaBnmfI9-6ChtPfqcCBGYg_srEWXSJMqPPaDw&usqp=CAU" 
+         alt="Logo" class="logo">
+    <div class="title">EMPLOYEE<span class="highlight"> <br>PAYROLL</span></div>
+  </div>
+</div>
+
+<div class="body">
+
+  <div class="container" *ngIf="!showForm">
+    <div class="header">
+      <h2>Employee Details</h2>
+      <div class="actions">
+        <div class="search-bar">
+          <input type="text" placeholder="Search...">
+          <button class="search-btn">🔍</button>
+        </div>
+        <button (click)="addNewEmployee()" class="add-user-btn">+ Add User</button>
+      </div>
+    </div>
+
+  <!-- Employee Table -->
+  <table>
+    <thead class="table-header">
+      <tr>
+        <th>NAME</th>
+        <th>GENDER</th>
+        <th>DEPARTMENT</th>
+        <th>SALARY</th>
+        <th>START DATE</th>
+        <th>ACTIONS</th>
+      </tr>
+    </thead>
+    <tbody class="table-body">
+      <tr *ngFor="let emp of employees; let i = index">
+        <td class="profile-name-center">
+          <div class="profile-wrapper">
+            <img [src]="emp.profileImage" alt="Profile" class="profile-img">
+            <span class="name">{{ emp.name }}</span>
+          </div>
+        </td>
+        <td>{{ emp.gender }}</td>
+        <td>
+          <span *ngFor="let dept of emp.department" class="tag">{{ dept }}</span>
+        </td>
+        <td>₹ {{ emp.salary }}</td>
+        <td>{{ emp.startDate | date }}</td>
+        <td>
+          <button (click)="deleteEmployee(i)">🗑️</button>
+          <button (click)="editEmployee(emp, i)">✏️</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Form Component -->
+<app-employee-form *ngIf="showForm"
+                   [employee]="editingEmployee"
+                   (formSubmit)="onFormSubmit($event)" 
+                   (cancel)="showForm = false">
+</app-employee-form>

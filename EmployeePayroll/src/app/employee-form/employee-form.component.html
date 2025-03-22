@@ -1,0 +1,67 @@
+<div class="form-container">
+    <div class="form-style">
+        <h3>{{ employee ? 'Edit' : 'Add' }} Employee</h3>
+  
+        <form #empForm="ngForm" (ngSubmit)="submitForm()">
+            
+            <!-- Name -->
+            <label>Name</label>
+            <input type="text" [(ngModel)]="formData.name" name="name" required>
+  
+            <!-- Profile Image Selection -->
+            <label>Profile Image</label>
+            <div class="profile-selection">
+                <img *ngFor="let img of profileImages" 
+                     [src]="img" 
+                     (click)="selectImage(img)" 
+                     [class.selected]="formData.profileImage === img">
+            </div>
+  
+            <!-- Gender -->
+            <label>Gender</label>
+            <select [(ngModel)]="formData.gender" name="gender" required>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+            </select>
+  
+            <!-- Department Selection -->
+            <label>Department</label>
+            <div class="department-group">
+                <input type="checkbox" 
+                       (change)="toggleDepartment('HR')" 
+                       [checked]="formData.department.includes('HR')"> HR
+  
+                <input type="checkbox" 
+                       (change)="toggleDepartment('Sales')" 
+                       [checked]="formData.department.includes('Sales')"> Sales
+  
+                <input type="checkbox" 
+                       (change)="toggleDepartment('Finance')" 
+                       [checked]="formData.department.includes('Finance')"> Finance
+  
+                <input type="checkbox" 
+                       (change)="toggleDepartment('Engineer')" 
+                       [checked]="formData.department.includes('Engineer')"> Engineer
+            </div>
+  
+            <!-- Salary -->
+            <label>Salary</label>
+            <input type="number" [(ngModel)]="formData.salary" name="salary" required>
+  
+            <!-- Start Date -->
+            <label>Start Date</label>
+            <input type="date" [(ngModel)]="formData.startDate" name="startDate" required>
+  
+            <!-- Notes -->
+            <label>Notes</label>
+            <textarea [(ngModel)]="formData.notes" name="notes"></textarea>
+  
+            <!-- Actions -->
+            <div class="actions">
+                <button type="submit">{{ employee ? 'Update' : 'Submit' }}</button>
+                <button type="button" (click)="cancelForm()">Cancel</button>
+            </div>
+        </form>
+    </div>
+  </div>
+  

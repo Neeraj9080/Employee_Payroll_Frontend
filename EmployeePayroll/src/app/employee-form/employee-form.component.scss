@@ -1,0 +1,74 @@
+.form-container {
+    font-family: 'Times New Roman', Times, serif;
+    background: #F7F7F7;
+
+    .form-style {
+        margin:auto;
+        padding: 20px;
+        background: #FFFFFF 0% 0% no-repeat padding-box;
+        border: 1px solid #F5F5F5;
+        border-radius: 8px;
+        box-shadow: 0px 3px 6px #00000029;
+        opacity: 1;
+        width: 600px;
+
+        form {
+            display: flex;
+            flex-direction: column;
+
+            label {
+              text-align: left;
+              margin: 10px 0 5px;
+              color: #42515F;
+              opacity: 1;
+              font-weight: bold;
+            }
+        
+            input, select, textarea {
+              padding: 8px;
+              margin-bottom: 10px;
+              width: 100%;
+              border: 1px solid #BDBDBD;
+              border-radius: 3px;
+              opacity: 1;
+            }
+        
+            .profile-selection img {
+              width: 45px;
+              height: 45px;
+              margin: 5px;
+              border-radius: 50%;
+              cursor: pointer;
+              border: 2px solid transparent;
+              opacity: 1;
+        
+              &.selected {
+                border-color: #4caf50;
+              }
+            }
+        
+            .department-group {
+              display: flex;
+              gap: 10px;
+              border-radius: 1px;
+            }
+        
+            .actions {
+              display: flex;
+              justify-content: space-between;
+        
+              button {
+                background-color: #969696;
+                color: white;
+                padding: 10px 20px;
+                cursor: pointer;
+                border: transparent;
+        
+                &:hover {
+                  background-color: #969696;
+                }
+              }
+            }
+        }
+    }
+  }
